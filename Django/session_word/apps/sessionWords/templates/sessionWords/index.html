@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <title> Session Words</title>
+  <style>
+   .big{
+     font-size: 24px
+   }
+
+   .red {
+     color: red
+   }
+
+   .green {
+     color: green
+   }
+
+   .blue{
+     color: blue
+   }
+  </style>
+</head>
+<body>
+  <h1> Session Words</h1>
+  <form action= "/addword" method="Post">
+    {% csrf_token %}
+    <p> Word: <input type="text" name="word"></p>
+    <p>select a color:
+      Red: <input type="radio" name="color" value="red">
+      Green: <input type="radio" name="color" value="green">
+      Blue: <input type="radio" name="color" value="blue">
+    </p>
+    <p> Use a big font?
+    <input type="checkbox" name="big">
+    <p>
+    <input type="submit" name="go!">
+    </p>
+
+  </form>
+  {% for word in request.session.stored_words %}
+    <p>
+
+    </p><span class= "{{word.size}} {{word.color}}">{{word.word}}</span> - {{word.time}}</p>
+  {% endfor %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+     <head>
+        <title>Dojo Survey</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="main-content">
+                <<h2>Submitted Info</h2>
+                <h1>User:</h1>
+                <!-- <h3>{{name}}</h3>
+                <h3>{{email}}</h3> -->
+                <ul>
+                  {% with messages = get_flashed_messages() %}
+                    {% if messages%}
+                      {% for message in messages %}
+                        <p>{{message}}</p>
+                      {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+                    <li> Name: {{ name }} </li>
+                    <li> Dojo Location: {{ location }}</li>
+                    <li> Favorite Language: {{ language }}</li>
+                    <li>{{email}}</li>
+                </ul>
+                <a href="/"><button type="button" name="button">back</button></a>
+                <form action='/users' method='post'>
+                    Name:<input type='text' name='name'>
+                    Favorite Language:<input type='text' name='language'>
+                    Location:<input type='text' name='location'>
+                    Email:<input type='text' name='email'>
+                    <input type='submit' value='Submit'>
+                </form>
+       </div>
+    </body>
+</html>

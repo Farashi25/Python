@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Template Test</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    <script type="text/javascript"src="{{url_for('static',filename='js/Javascript.js')}}"></script>
+  </head>
+  <body>
+    <form action='/users' method='post'>
+        Name: <input type='text' name='name'>
+        Email: <input type='text' name='email'>
+        <input type='submit' value='create user'>
+    </form>
+    <h3>My flask template with embedded python-like code</h3>
+    <p>My Name is {{ name }}</p>
+    <p>phrase: {{ phrase }}</p>
+    <p>Times: {{ time }}</p>
+    {% for x in range(0, time): %}
+    <p>{{ phrase }}</p>
+    {% endfor %}
+    {% if phrase == 'hello' %}
+    <p>the phrase says hello</p>
+    {% endif %}
+</body>
+</html>

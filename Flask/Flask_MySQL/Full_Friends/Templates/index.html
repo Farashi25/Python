@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>Friends</title>
+</head>
+<body>
+{{ all_friends }}
+<table border = 10>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Occupation</th>
+  </tr>
+  {% for friend in all_friends %}
+  <tr>
+  <td>{{friend.first_name}}</td>
+  <td>{{friend.last_name}}</td>
+  <td>{{friend.email}}</td>
+  <td>{{friend.occupation}}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h1>These are all my main friends!</h1>
+<!-- with all the data we can then construct a more structured output -->
+{% for friend in all_friends: %}
+   <p>ID: {{ friend['id'] }}</p>
+   <p>First Name: {{ friend['first_name'] }}</p>
+   <p>Last Name: {{ friend['last_name'] }}</p>
+   <p>Occupation: {{ friend['occupation'] }}</p>
+   <form action='/remove_friend/{{ friend['id'] }}' method='POST'>
+     <input type="submit" value="delete">
+   </form>
+   <hr>
+{% endfor %}
+{% if one_friend %}
+  <p>ID: {{ one_friend['id'] }}</p>
+  <p>First Name: {{ one_friend['first_name'] }}</p>
+  <p>Last Name: {{ one_friend['last_name'] }}</p>
+  <p>Occupation: {{ one_friend['occupation'] }}</p>
+{% endif %}
+  <form action='/friends' method='POST'>
+    <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+    <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+    <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation"></label>
+    <label for "email">Email:<input type="text" name="email" id="email" id="email"></label>
+    <label for "password">Password:<input type="password" name="password" id= "password"></label>
+    <input type="submit" value="Add">
+  </form>
+</body>
+</html>

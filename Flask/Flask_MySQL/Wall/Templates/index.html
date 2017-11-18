@@ -1,0 +1,24 @@
+<html>
+    <head>
+       <title>The Wall</title>
+    </head>
+    <body>
+      <h1>Wall Registration</h1>
+      <h3>Form</h3>
+      {% with messages = get_flashed_messages() %}
+        {% if messages%}
+          {% for message in messages %}
+            <p>{{message}}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <form action="/register" method="post">
+            <input class='textbox' type='text' name='first_name' placeholder = "First Name"><br><br>
+            <input class='textbox' type='text' name='last_name' placeholder = "Last Name"><br><br>
+            <input class='textbox' type='text' name='email' placeholder = "Email"><br><br>
+            <input class='textbox' type='password' name='password' placeholder = "Password"><br><br>
+            <input class='textbox' type='password' name='pwdconfirm' placeholder = "Confirm Password"><br><br>
+            <input type='submit' value='Register'>
+      </form>
+    </body>
+</html>
